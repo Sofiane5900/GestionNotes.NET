@@ -6,8 +6,7 @@ namespace MyApp // Note: actual namespace depends on the project name.
     {
         static void Main(string[] args)
         {
-
-            int[] tableauNotes = new int [4];
+            int[] tableauNotes = new int[4];
             Console.WriteLine("--- Gestion des notes avec Menu ---\n");
 
             Console.WriteLine("1--- Saisir les notes");
@@ -20,21 +19,17 @@ namespace MyApp // Note: actual namespace depends on the project name.
             int userInput = int.Parse(Console.ReadLine());
             int choice = userInput;
 
-
-          
-            switch(choice)
+            switch (choice)
             {
                 case 0:
                     Environment.Exit(0);
                     break;
-                 case 1:
-                    Console.WriteLine("Merci de saisir la note 1 (sur /20)");
-
-
+                case 1:
+                    for (int i = 0; i < tableauNotes.Length; i++)
+                        Console.Write($"Merci de saisir la note {i + 1} (sur /20)");
+                        tableauNotes[5] = int.Parse(Console.ReadLine());
+                    break;
             }
-
-            
-
         }
     }
 }
