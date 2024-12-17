@@ -7,7 +7,7 @@ namespace MyApp // Note: actual namespace depends on the project name.
         static void Main(string[] args)
         {
             int[] tableauNotes = new int[4];
-            while (true)
+            do
             {
                 Console.WriteLine("--- Gestion des notes avec Menu ---\n");
 
@@ -73,7 +73,7 @@ namespace MyApp // Note: actual namespace depends on the project name.
                         Console.ResetColor();
                         break;
                 }
-            }
+            } while (true);
         }
     }
 }
