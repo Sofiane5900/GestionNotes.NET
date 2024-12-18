@@ -6,7 +6,7 @@ namespace MyApp // Note: actual namespace depends on the project name.
     {
         static void Main(string[] args)
         {
-            int[] tableauNotes = new int[4];
+            List<int> listNotes = new List<int>();
             do
             {
                 Console.WriteLine("--- Gestion des notes avec Menu ---\n");
@@ -31,21 +31,27 @@ namespace MyApp // Note: actual namespace depends on the project name.
                         Console.ForegroundColor = ConsoleColor.Green;
                         Console.WriteLine("-- Saisir les notes ---");
                         Console.WriteLine("(999 pour stoper la saisie) \n");
-                        for (int i = 0; i < tableauNotes.Length; i++)
+                        int compteur = 0;
+                        while (true)
                         {
                             Console.ResetColor();
-                            Console.Write($"Merci de saisir la note {i + 1} (sur /20) : ");
+                            Console.Write($"Merci de saisir la note {compteur + 1} (sur /20) : ");
                             int notesInput = int.Parse(Console.ReadLine());
-                            tableauNotes[i] = notesInput;
                             if (notesInput.Equals(999))
                             {
                                 break;
+
                             }
                             else if (notesInput > 20)
                             {
                                 Console.ForegroundColor = ConsoleColor.Red;
                                 Console.WriteLine("\t\tErreur de saisie, la note est sur 20 !");
                                 Console.ResetColor();
+                            }
+                            else
+                            {
+                                listNotes.Add(notesInput);
+                                compteur++;
                             }
 
                         }
@@ -55,21 +61,21 @@ namespace MyApp // Note: actual namespace depends on the project name.
                         Console.Clear();
                         Console.ForegroundColor = ConsoleColor.Green;
                         Console.WriteLine("------ La plus grande note ------ \n");
-                        Console.WriteLine($"-- La plus grande note est {tableauNotes.Max()}/20 --- \n");
+                        Console.WriteLine($"-- La plus grande note est {listNotes.Max()}/20 --- \n");
                         Console.ResetColor();
                         break;
                     case 3:
                         Console.Clear();
                         Console.ForegroundColor = ConsoleColor.Red;
                         Console.WriteLine("------ La plus petite note ------ \n");
-                        Console.WriteLine($"-- La plus pette note est {tableauNotes.Min()}/20 --- \n");
+                        Console.WriteLine($"-- La plus pette note est {listNotes.Min()}/20 --- \n");
                         Console.ResetColor();
                         break;
                     case 4:
                         Console.Clear();
                         Console.ForegroundColor = ConsoleColor.Cyan;
                         Console.WriteLine("------ La moyenne des notes ------ \n");
-                        Console.WriteLine($"-- La moyenne des notes est {tableauNotes.Average()}/20 --- \n");
+                        Console.WriteLine($"-- La moyenne des notes est {listNotes.Average()}/20 --- \n");
                         Console.ResetColor();
                         break;
                 }
