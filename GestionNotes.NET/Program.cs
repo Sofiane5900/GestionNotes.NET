@@ -37,8 +37,16 @@ namespace MyApp // Note: actual namespace depends on the project name.
                         {
                             Console.ResetColor();
                             Console.Write($"Merci de saisir la note {compteur + 1} (sur /20) : ");
-                            int notesInput = int.Parse(Console.ReadLine());
-                            if (notesInput.Equals(999)) // Si la saisie de l'user = 999 je sors de ma "case 1"
+                            int notesInput;
+                            bool success = int.TryParse(Console.ReadLine() , out notesInput);
+                            
+                            if (!success)
+                            {
+                                Console.ForegroundColor = ConsoleColor.Red;
+                                Console.WriteLine("\t\tErreur de saisie, veuillez entrer un nombre entier");
+                                Console.ResetColor();
+                            }
+                            else if (notesInput.Equals(999)) // Si la saisie de l'user = 999 je sors de ma "case 1"
                             {
                                 break; 
 
